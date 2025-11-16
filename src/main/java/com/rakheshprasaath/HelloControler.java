@@ -10,7 +10,8 @@ public class HelloControler {
     @RequestMapping("/home")
     public  String home(){
         System.out.print("in home");
-        return "index.jsp";
+//        return "index.jsp";
+        return  "addAlien.jsp";
     }
 
     @RequestMapping("/result")
@@ -24,6 +25,12 @@ public class HelloControler {
         }catch (Exception e){
             e.printStackTrace();
         }
+        return "result.jsp";
+    }
+
+    @RequestMapping("/addAlien")
+    public  String addAlien(Alien alien){
+
         return "result.jsp";
     }
 

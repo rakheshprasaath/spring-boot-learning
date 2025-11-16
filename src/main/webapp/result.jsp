@@ -1,5 +1,5 @@
 <html>
 <body>
-    <h2 position: center> Result: ${result}</h2>
+    <h2> Result: ${alien}</h2>
 </body>
 </html>
