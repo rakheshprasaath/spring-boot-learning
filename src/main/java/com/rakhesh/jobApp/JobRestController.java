@@ -57,7 +57,13 @@ public  class JobRestController {
 
     }
 
+    @PostMapping("load")
+    public  ResponseEntity<String> loadJob()
+    {
+        service.load();
 
+        return ResponseEntity.ok("jobs loaded successfully");
+    }
 
 
 
