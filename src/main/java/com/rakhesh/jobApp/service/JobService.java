@@ -53,4 +53,8 @@ public class JobService {
 
         repo.saveAll(jobs);
     }
+
+    public List<JobPost> searchByKeyword(String keyword){
+        return repo.findDistinctByPostProfileContainingIgnoreCaseOrPostDescContainingIgnoreCase(keyword,keyword);
+    }
 }

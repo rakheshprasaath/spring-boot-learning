@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface JobRepo extends JpaRepository<JobPost, Integer> {
 
+    List<JobPost> findDistinctByPostProfileContainingIgnoreCaseOrPostDescContainingIgnoreCase(String postProfile, String postDesc);
+
 }
 
 //List<JobPost> jobs = new ArrayList<>(Arrays.asList(

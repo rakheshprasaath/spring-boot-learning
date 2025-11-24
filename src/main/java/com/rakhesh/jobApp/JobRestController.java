@@ -65,6 +65,13 @@ public  class JobRestController {
         return ResponseEntity.ok("jobs loaded successfully");
     }
 
+    @PostMapping("search/{keyword}")
+    @ResponseBody
+    public List<JobPost> searchByKeyword(@PathVariable("keyword") String keyword)
+    {
+        return service.searchByKeyword(keyword);
+    }
+
 
 
 }
