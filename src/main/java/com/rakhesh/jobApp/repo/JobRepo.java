@@ -1,7 +1,10 @@
 package com.rakhesh.jobApp.repo;
 
 import com.rakhesh.jobApp.model.JobPost;
+import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -11,7 +14,12 @@ import java.util.List;
 @Repository
 public interface JobRepo extends JpaRepository<JobPost, Integer> {
 
-    List<JobPost> findDistinctByPostProfileContainingIgnoreCaseOrPostDescContainingIgnoreCase(String postProfile, String postDesc);
+//    List<JobPost> findDistinctByPostProfileContainingIgnoreCaseOrPostDescContainingIgnoreCase(String postProfile, String postDesc);
+
+    @Query("SELECT j from JobPost j where " +
+    "LOWER(j.postDesc) LIKE LOWER(CONCAT('%', :keyword,'%')) OR " +
+    "LOWER(j.postProfile) LIKE LOWER(CONCAT('%', :keyword,'%')) " )
+    List<JobPost> searchJob(@Param("keyword") String keyword);
 
 }
 

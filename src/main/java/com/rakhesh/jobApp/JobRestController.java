@@ -12,20 +12,18 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
-@Controller
+@RestController
 public  class JobRestController {
 
     @Autowired
     private JobService service;
 
     @GetMapping("jobPost")
-    @ResponseBody
     public List<JobPost> getAlljobs(){
         return service.getAllJobs();
     }
 
     @GetMapping("jobPost/{jobId}")
-    @ResponseBody
     public JobPost getJobPost(@PathVariable("jobId") int jobId)
     {
         System.out.print(service.getJob(jobId));
@@ -78,7 +76,6 @@ public  class JobRestController {
     }
 
     @PostMapping("search/{keyword}")
-    @ResponseBody
     public List<JobPost> searchByKeyword(@PathVariable("keyword") String keyword)
     {
         return service.searchByKeyword(keyword);
