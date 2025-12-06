@@ -1,7 +1,9 @@
 package com.rakhesh.jobApp;
 
 import com.rakhesh.jobApp.model.JobPost;
+import com.rakhesh.jobApp.model.User;
 import com.rakhesh.jobApp.service.JobService;
+import com.rakhesh.jobApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,11 +14,13 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
+@CrossOrigin("http://localhost")
 @RestController
 public  class JobRestController {
 
     @Autowired
     private JobService service;
+//    private UserService userService;
 
     @GetMapping("jobPost")
     public List<JobPost> getAlljobs(){
@@ -80,6 +84,19 @@ public  class JobRestController {
     {
         return service.searchByKeyword(keyword);
     }
+
+//    @PostMapping("addUser")
+//    public ResponseEntity<String> addUser(User user)
+//    {
+//        try {
+//            userService.saveUser(user);
+//        }catch (Exception e) {
+//                return ResponseEntity
+//                        .status(HttpStatus.BAD_REQUEST)
+//                        .body(e.getMessage());
+//            }
+//        return new ResponseEntity<>("successfully added",HttpStatus.CREATED);
+//    }
 
 
 
