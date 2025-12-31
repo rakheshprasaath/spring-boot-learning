@@ -18,9 +18,11 @@ import java.util.List;
 @RestController
 public  class JobRestController {
 
-    @Autowired
-    private JobService service;
-//    private UserService userService;
+    private final JobService service;
+
+    public JobRestController(JobService jobService) {
+        this.service = jobService;
+    }
 
     @GetMapping("jobPost")
     public List<JobPost> getAlljobs(){
@@ -85,17 +87,7 @@ public  class JobRestController {
         return service.searchByKeyword(keyword);
     }
 
-//    @PostMapping("addUser")
-//    public ResponseEntity<String> addUser(User user)
-//    {
-//        try {
-//            userService.saveUser(user);
-//        }catch (Exception e) {
-//                return ResponseEntity
-//                        .status(HttpStatus.BAD_REQUEST)
-//                        .body(e.getMessage());
-//            }
-//        return new ResponseEntity<>("successfully added",HttpStatus.CREATED);
+
 //    }
 
 
